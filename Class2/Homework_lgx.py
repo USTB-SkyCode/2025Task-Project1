@@ -20,7 +20,7 @@ def res(m):
         messages= m,
         max_tokens=1000
     )
-    return response
+    return response.choices[0].message.content
 
 history = []  # 初始化对话历史记录
 history_summary = [] # 初始化对话历史总结
@@ -42,11 +42,9 @@ while True:
         dele_history = history[:11]
         sum_question = {"role": "system", "content":f"{dele_history}这是之前的对话记录，将其总结成一段话."}
         summary_response = res([sum_question])
-        summary_text = summary_response.choices[0].message.content
-        history_summary = [{"role": "system", "content":f"这是之前对话内容的总结，依据这些内容回答问题: {summary_text}"}]
+        history_summary = [{"role": "system", "content":f"这是之前对话内容的总结，依据这些内容回答问题: {summary_response}"}]
         history = history[11:]
 
-    answer = response.choices[0].message.content
-    history.append({"role": "assistant", "content": answer})
-    print(answer)
+    history.append({"role": "assistant", "content": response})
+    print(response)
 
