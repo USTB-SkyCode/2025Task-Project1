@@ -31,6 +31,6 @@ while n < maxn:
     if n == maxn:
         if a == 1:
             history = history[-4:];n = 2
-            print("已保留近两轮对话，可继续对话")
+            print("已保留近两轮对话，可继续进行对话")
         else:
             print("对话已结束")
