@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask JavaScript连接示例(jquery.ajax)</title>
+    <script src="{{ url_for('static', filename='jquery3.7.1.js') }}"></script>
+</head>
+
+<body>
+    <h4>send data to backend via ajax</h4>
+    <button id="btn">click to send data</button>
+    <script>
+        btn.onclick = (e) => {
+            $.ajax({
+                url : "/getAnswer",
+                data : {name : "Stuart Westmorland", age:NaN},
+                success: (result) => {
+                    if (result.success === 0){
+                        alert(result.data)
+                    }else{
+                        alert('failed, find him')
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>
+

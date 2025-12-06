@@ -1,0 +1,8 @@
+<form action="/execute" method="post">
+    <textarea name="code" rows="10" cols="30"></textarea><br>
+    <input type="submit" value="Execute">
+</form>
+{% if result %}
+<h2>Result:</h2>
+<pre>{{ result }}</pre>
+{% endif %}
